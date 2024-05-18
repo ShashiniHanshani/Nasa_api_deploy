@@ -31,7 +31,7 @@ const VideoPreview = ({ videoPreview, videoPlay, title, description, vid }) => {
                     controls
                     playing
                 />
-                <div className="container-Modal">
+                <div className="container-Modal mx-auto p-4 ">
                     <h1 className="Title_Modal">{title}</h1>
                     <p className="description_Modal">{description}</p>
                 </div>

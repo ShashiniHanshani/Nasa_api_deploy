@@ -1,29 +1,27 @@
+// _test_/apod.spec.js
 import React from 'react';
-import renderer from 'react-test-renderer';
+import { render, screen } from '@testing-library/react';
+import { act } from 'react-dom/test-utils';
+import axios from 'axios';
+import mockAxios from '../__mocks__/axios';
 import APOD from '../src/components/APOD';
-// Mock the fetch function
-global.fetch = jest.fn(() =>
-  Promise.resolve({
-    json: () => Promise.resolve({
-      url: 'https://example.com/image.jpg',
-      title: 'Test Title',
-      date: '2024-05-18',
-      explanation: 'Test explanation.',
-    }),
-  })
-);
 
-describe('APOD Component', () => {
-  it('renders correctly and fetches data', async () => {
-    const component = renderer.create(<APOD />);
-    await Promise.resolve(); // Wait for useEffect to complete
-    const tree = component.toJSON();
-    console.log(tree); // Add this line before the failing expectations
+// Mock the API response
+mockAxios.onGet('https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY').reply(200, {
+  url: 'https://example.com/image.jpg',
+  title: 'Test Title',
+  date: '2024-05-18',
+  explanation: 'Test explanation.',
+});
 
-    expect(tree).toMatchSnapshot(); // Check if the component renders without crashing
-    expect(tree.children[0].children[1].props.src).toBe('https://example.com/image.jpg'); // Check if image URL is correct
-    expect(tree.children[1].children[0].children[0].children[0]).toBe('Test Title'); // Check if title is correct
-    expect(tree.children[1].children[0].children[0].children[1]).toBe('2024-05-18'); // Check if date is correct
-    expect(tree.children[1].children[1].children[0]).toBe('Test explanation.'); // Check if explanation is correct
+test('renders correctly and fetches data', async () => {
+  await act(async () => {
+    render(<APOD />);
   });
+
+  const imgElement = screen.getByRole('img');
+  expect(imgElement).toHaveAttribute('src', 'https://example.com/image.jpg');
+  expect(screen.getByText('Test Title')).toBeInTheDocument();
+  expect(screen.getByText('2024-05-18')).toBeInTheDocument();
+  expect(screen.getByText('Test explanation.')).toBeInTheDocument();
 });
