@@ -9,13 +9,18 @@ const SignUp = () => {
         email: '',
         password: ''
     });
-
+    const [error, setError] = useState('');
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        if (!formData.username || !formData.email || !formData.password) {
+            setError('All fields are required.');
+            return;
+        }
+
         try {
             const response = await axios.post('http://localhost:8070/NasaUser/add', formData);
             console.log(response.data);
@@ -34,6 +39,7 @@ const SignUp = () => {
         <div className="flex items-center justify-center h-screen">
             <div className="bg-slate-800 border border-slate-600 rounded-md p-8 shadow-lg backdrop-filter backdrop-blur-lg bg-opacity-30 relative">
                 <h1 className="text-3xl font-bold text-center text-white">Sign Up</h1>
+                {error && <p className="text-red-500 text-center mb-4">{error}</p>}
                 <form onSubmit={handleSubmit} >
                     <div className='relative my-4 text-white '>
                         <input type="text" name="username" value={formData.username} onChange={handleChange} placeholder="Username" className='block w-72 py-2.5 px-0 text-sm text-white bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:focus:border-blue-500 

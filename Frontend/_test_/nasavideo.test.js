@@ -2,7 +2,7 @@ import React from 'react';
 import { render, fireEvent, waitFor } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect'; // For expect(...).toBeInTheDocument()
 import axios from 'axios'; // Mock Axios requests
-import HomeVideo from './HomeVideo';
+import HomeVideo from '../src/components/NasaVideo/HomeVideo';
 
 // Mock Axios get request
 jest.mock('axios');

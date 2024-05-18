@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`APOD Component renders correctly and fetches data 1`] = `<div />`;

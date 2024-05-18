@@ -27,7 +27,7 @@
 }
 
 .button:hover {
-    color: rgb(50, 50, 163) !important;
+    color: rgb(#facc15) !important;
     font-weight: 700 !important;
     letter-spacing: 3px;
     background: none;

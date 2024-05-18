@@ -3,7 +3,7 @@ import { render, fireEvent, waitFor } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect'; // For expect(...).toBeInTheDocument()
 import axios from 'axios'; // Mock Axios requests
 
-import Login from './Login';
+import Login from '../src/components/Login';
 
 // Mock Axios post request
 jest.mock('axios');

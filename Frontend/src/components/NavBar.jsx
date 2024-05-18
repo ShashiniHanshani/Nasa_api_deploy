@@ -31,9 +31,9 @@ const NavBar = () => {
                     </button>
                 </div>
                 <div className="hidden sm:block">
-                    <button className="text-white border-2 border-white px-3 py-1 rounded-md">
+                    <Link to='/signup' className="text-white border-2 border-white px-3 py-1 rounded-md">
                         Sign Up
-                    </button>
+                    </Link>
                 </div>
             </div>
             <ul className={`flex flex-col items-center gap-4 text-xl py-4 text-white sm:hidden ${isOpen ? 'block' : 'hidden'}`}>

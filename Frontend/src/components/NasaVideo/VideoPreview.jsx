@@ -26,8 +26,8 @@ const VideoPreview = ({ videoPreview, videoPlay, title, description, vid }) => {
             >
                 <ReactPlayer
                     url={videoPlay}
-                    width='80%'
-                    height='80%'
+                    width='60%'
+                    height='60%'
                     controls
                     playing
                 />

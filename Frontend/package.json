@@ -3,6 +3,11 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "jest": {
+    "transform": {
+      "^.+\\.jsx?$": "babel-jest"
+    }
+  },
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -11,6 +16,7 @@
     "test": "jest"
   },
   "dependencies": {
+    "@testing-library/user-event": "^14.5.2",
     "axios": "^1.6.8",
     "lucide-react": "^0.378.0",
     "react": "^18.2.0",
@@ -20,15 +26,19 @@
     "react-player": "^2.16.0",
     "react-router-dom": "^6.23.0",
     "react-simple-typewriter": "^5.0.1",
+    "react-test-renderer": "^18.3.1",
     "tailwind": "^4.0.0"
   },
   "devDependencies": {
+    "@babel/preset-env": "^7.24.5",
+    "@babel/preset-react": "^7.24.1",
     "@testing-library/jest-dom": "^6.4.5",
-    "@testing-library/react": "^15.0.6",
+    "@testing-library/react": "^15.0.7",
     "@types/react": "^18.2.66",
     "@types/react-dom": "^18.2.22",
     "@vitejs/plugin-react": "^4.2.1",
     "autoprefixer": "^10.4.19",
+    "babel-jest": "^29.7.0",
     "eslint": "^8.57.0",
     "eslint-plugin-react": "^7.34.1",
     "eslint-plugin-react-hooks": "^4.6.0",
